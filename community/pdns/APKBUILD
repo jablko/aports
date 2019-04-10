@@ -78,7 +78,7 @@ package() {
 
 	install -m755 -D "$srcdir/$pkgname.initd" \
 		"$pkgdir/etc/init.d/$pkgname"
-	rm "$pkgdir/etc/$pkgname/$pkgname.conf-dist"
+	#rm "$pkgdir/etc/$pkgname/$pkgname.conf-dist"
 	install -m600 -D "$srcdir/$pkgname.conf" \
 		"$pkgdir/etc/$pkgname/$pkgname.conf"
 	chown pdns:pdns "$pkgdir/etc/$pkgname/$pkgname.conf"

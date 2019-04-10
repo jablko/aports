@@ -7,5 +7,13 @@ install:
 script: |
   source .travis/common.sh
   alpine_run $USER .travis/build-pkgs
+deploy:
+  provider: pages
+  github-token:
+    # echo -n ... | openssl rsautl -inkey <(curl https://api.travis-ci.org/repos/{owner}/{repo}/key | jq --raw-output .key) -pubin -encrypt | base64 --wrap 0
+    secure: W10be4Fthdq7Xhte0oaULCLYUwqr7NgDrEsuIW6WSFhIlXXd/9l2dLZ9FHU+SgymtWdfbbf5G8/vhX1bYx2LpIEQAWJ4+wADjNv+MLKdXJEIGEfKbRWB9qDgAfVFEYkzm/2sPXDjDtI1dcj2pGhgrBmv5N3M8PSmR1AJsMk0so2T7+6YRDpN7vzgT9xMZVwIYONUFZnv28jNY3JQ5L55Bg9wEyh9iWDsyEz54gVCXQTO6XH/t2aI5Yt3SbrYZDaV3PdGE7rRK5ylzx7dWpQ3CHir9jYKk2Qk3m/9vOzZwZBRCwvnuE4CSOzBWTbpV2YkxWDaZ1B8sihO8XtrY6WXMQMgZFBFg+ijl6n6FWl+nXO5pidDc0+tmOnlOsvfW2XSVnl31Li8jihEdNo76kWj8MeymWnbcwrgxF9xckXzM9nApnwZS0IiF9fzUC3xvT4zTkueAkKEl3rguj7W4PX6w9omjnutjLIht6VvijPLA1TSiCA0UMUhnNj2GxLgMrK63ggveRuTcegfB+MFLMTnViuM9CGAKXWcF3AtZ3Q8qfKfLumH3fqK9sU+E+N2gGNM5JzZOjBKT5qFj/i14LP2owpzj/bRngB5G7YnYyk1vzfiQeDUDAXU0i4VL8qN7NDZR/i6YkFFfOFQXDZRPtRBjbAMBRLf1fV/JK09jFLYUHM=
+  local-dir: /mnt/alpine/home/$USER/packages
+  on:
+    branch: patch-1
 notifications:
   email: false
